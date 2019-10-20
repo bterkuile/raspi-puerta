@@ -28,7 +28,7 @@ const takeSnapshot = (camera='CAM1', trigger='movement') => {
   let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/, '-');
   let filename = 'snapshot-'+timestamp+'.jpg';
   console.log(filename);
-  exec('raspistill -o "snapshots/'+filename+'" -t 307', (err, stdout, stderr) => {
+  exec('raspistill -o "snapshots/'+filename+'" -t 308', (err, stdout, stderr) => {
     if (err) {
       // node couldn't execute the command
       console.log('Error taking snapshot');
