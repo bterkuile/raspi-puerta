@@ -2,7 +2,7 @@
 source /etc/profile
 sleep 40
 cd /home/pi/apps/
-git pull
+git pull --no-edit
 
 cd /home/pi/apps/test1/
 mkdir -p snapshots
