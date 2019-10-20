@@ -11,7 +11,9 @@ const button = new Gpio(12, 'in', 'both');
 
 var settings = {
   "motion_active": true,
-  "motion_email_active": true
+  "motion_email_active": true,
+  "take_snapshot": false,
+  "capture_time": 500
 };
 
 const updateSettings = (settings) => {
@@ -20,6 +22,11 @@ const updateSettings = (settings) => {
     Object.keys(body).forEach((key) => {
       settings[key] = body[key];
     });
+
+    if(settings.take_snapshot){
+      takeSnapshot('CAM1', 'manual');
+      settings.take_snapshot = false;
+    }
   });
 };
 setInterval(updateSettings, 12*1000, settings);
@@ -28,7 +35,7 @@ const takeSnapshot = (camera='CAM1', trigger='movement') => {
   let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/, '-');
   let filename = 'snapshot-'+timestamp+'.jpg';
   console.log(filename);
-  exec('raspistill -o "snapshots/'+filename+'" -t 100 -rot 90', (err, stdout, stderr) => {
+  exec(`raspistill -o "snapshots/${filename}" -t ${settings.capture_time} -rot 90`, (err, stdout, stderr) => {
     if (err) {
       // node couldn't execute the command
       console.log('Error taking snapshot');
