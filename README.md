@@ -22,6 +22,8 @@ with additions:
 ```
 export SERVER_AUTH_TOKEN='<<<very secret token to get access to the server>>>'
 export SERVER_HOST='<<<less secret server receiving the updates>>>'
+export NPM_CONFIG_PREFIX=/home/pi/.npm-global
+export NODE_PATH=$NPM_CONFIG_PREFIX/lib/node_modules
 ```
 An example hostname could be: `http://192.168.0.107`
 
