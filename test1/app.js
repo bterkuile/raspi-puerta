@@ -72,5 +72,5 @@ process.on('SIGINT', () => {
   led_motion.unexport();
   led_button.unexport();
   motion_sensor.unexport();
-  buttion.unexport();
+  button.unexport();
 });
