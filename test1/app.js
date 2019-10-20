@@ -22,7 +22,7 @@ const updateSettings = (settings) => {
     });
   });
 };
-setInterval(updateSettings, 2000, settings);
+setInterval(updateSettings, 12*1000, settings);
 const takeSnapshot = (camera='CAM1', trigger='movement') => {
   console.log('Starting snapshot');
   let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/, '-');
