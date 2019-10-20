@@ -1,9 +1,9 @@
 #!/bin/bash
 source /etc/profile
-sleep 40
+sleep 20
 cd /home/pi/apps/
 git pull --no-edit > /home/pi/logs/git-pull.log 2&1
-
+sleep 2
 cd /home/pi/apps/test1/
 mkdir -p snapshots
 logger Starting the raspii app
