@@ -13,7 +13,7 @@ var settings = {
   "motion_active": true,
   "motion_email_active": true,
   "take_snapshot": false,
-  "capture_time": 500
+  "capture_time": 800
 };
 
 const updateSettings = (settings) => {
@@ -35,7 +35,7 @@ const takeSnapshot = (camera='CAM1', trigger='movement') => {
   let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/, '-');
   let filename = 'snapshot-'+timestamp+'.jpg';
   console.log(filename);
-  exec(`raspistill -o "snapshots/${filename}" -t ${settings.capture_time} -rot 90`, (err, stdout, stderr) => {
+  exec(`raspistill -ex night -o "snapshots/${filename}" -t ${settings.capture_time} -rot 90`, (err, stdout, stderr) => {
     if (err) {
       // node couldn't execute the command
       console.log('Error taking snapshot');
